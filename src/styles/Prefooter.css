@@ -1,0 +1,36 @@
+.prefooter {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 70px;
+  position: relative;
+}
+.prefooter__card {
+  width: 25%;
+}
+.prefooter__card > .title {
+  margin-bottom: 15px;
+}
+.prefooter__card > .text {
+  margin-bottom: 15px;
+}
+.prefooter__link {
+  color: rgb(14, 115, 197);
+}
+.circle {
+  display: block;
+  position: absolute;
+  background-color: #6db33f;
+  border-radius: 50%;
+  height: 345px;
+  width: 345px;
+  right: -400px;
+  bottom: -140px;
+}
+.circle__grid {
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  right: -140px;
+  top: 20px;
+}

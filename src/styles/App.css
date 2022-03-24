@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Metropolis-bold";
+  src: url(../assets/fonts/Metropolis-Bold.otf);
+}
+@font-face {
+  font-family: "Metropolis-medium";
+  src: url(../assets/fonts/Metropolis-Medium.otf);
+}
+@font-face {
+  font-family: "Metropolis-thin";
+  src: url(../assets/fonts/Metropolis-Thin.otf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Metropolis-medium";
+}
+a {
+  color: black;
+  text-decoration: none;
+}
