@@ -1,5 +1,7 @@
 import CardsBlock from "./CardsBlock";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logOutAction } from "../../store/actionsCreators/userActions";
 import debounce from "lodash.debounce";
 import ProjectService from "../../services/ProjectService";
 
@@ -7,6 +9,9 @@ const ProjectsBlock = () => {
   const [error, setError] = useState(null);
   const [filtredCards, setCards] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const user = useSelector(({ user }) => user);
+  const dispatch = useDispatch(user);
 
   useEffect(() => {
     getCards("");
@@ -21,6 +26,7 @@ const ProjectsBlock = () => {
         (error) => {
           setIsLoaded(true);
           setError(error);
+          dispatch(logOutAction())
         }
       );
     
