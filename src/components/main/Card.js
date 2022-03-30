@@ -6,7 +6,6 @@ const Card = ({ item }) => {
       <div className="card">
         <img className="card__image" src={item.imageSrc} alt="svg image" />
         <div className="text">
-          {console.log("rendered")}
           <h2 className="card__title">{item.title}</h2>
           <p className="card__description">{item.description}</p>
         </div>

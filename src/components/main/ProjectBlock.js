@@ -1,6 +1,7 @@
 import CardsBlock from "./CardsBlock";
 import { useState, useEffect } from "react";
 import debounce from "lodash.debounce";
+import ProjectService from "../../services/ProjectService";
 
 const ProjectsBlock = () => {
   const [error, setError] = useState(null);
@@ -12,16 +13,17 @@ const ProjectsBlock = () => {
   }, []);
 
   const getCards = (searchValue) => {
-    // fetchProjects(searchValue).then(
-    //   (result) => {
-    //     setIsLoaded(true);
-    //     setCards(result.filtred);
-    //   },
-    //   (error) => {
-    //     setIsLoaded(true);
-    //     setError(error);
-    //   }
-    // );
+    ProjectService.fetchProjects(searchValue).then(
+        ({data}) => {
+          setIsLoaded(true);
+          setCards(data.filtred);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
+    
   };
 
   const debounceProjectFetch = debounce((searchValue) => {
