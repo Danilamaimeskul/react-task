@@ -20,8 +20,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit" : "npx pretty-quick --staged",
-      "pre-push" : "jest"
+      "pre-commit": "pretty-quick --staged",
+      "pre-push": "jest"
     }
   },
   "scripts": {

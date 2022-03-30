@@ -1,4 +1,4 @@
-import { LOG_IN, LOG_OUT } from "../reducers/userReducer";
+import types from "../types";
 
-export const logInAction = () => ({ type: LOG_IN });
-export const logOutAction = () => ({ type: LOG_OUT });
+export const logInAction = (user) => ({ type: types.LOG_IN, payload: user });
+export const logOutAction = () => ({ type: types.LOG_OUT });

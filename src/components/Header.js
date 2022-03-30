@@ -6,6 +6,7 @@ import "../styles/Header.css";
 import logo from "../assets/images/logo.svg";
 import xMark from "../assets/images/x-mark.svg";
 import { logOutAction } from "../store/actionsCreators/userActions";
+import AuthService from "../services/AuthService";
 
 function Header(props) {
   const menuRef = useRef(null);
@@ -25,6 +26,8 @@ function Header(props) {
   }
 
   const logOut = () => {
+    const response = AuthService.logout();
+    localStorage.removeItem("token");
     dispatch(logOutAction());
   };
 

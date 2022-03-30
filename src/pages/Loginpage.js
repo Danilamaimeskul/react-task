@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import fetchAuth from "../api/authAPI";
 import "../styles/LoginPage.css";
+import AuthService from "../services/AuthService";
+import { logInAction } from "../store/actionsCreators/userActions";
 
 function Loginpage(props) {
   const [login, setLogin] = useState("");
@@ -13,11 +14,13 @@ function Loginpage(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let details = {
-      login: login,
-      password: password,
-    };
-    dispatch(fetchAuth(details));
+    try {
+      const response = await AuthService.login(login, password);
+      localStorage.setItem("token", response.data.accessToken);
+      dispatch(logInAction(response.data.user));
+    } catch (e) {
+      console.log(e.response?.data?.message);
+    }
   };
 
   return (

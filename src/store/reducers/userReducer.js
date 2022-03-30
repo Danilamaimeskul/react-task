@@ -1,16 +1,15 @@
-const defaultState = {
-  isLogin: false,
-};
+import types from "../types";
 
-export const LOG_IN = "LOG_IN";
-export const LOG_OUT = "LOG_OUT";
+
+const defaultState =  { isLogin: false, user: null };
 
 const userReducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case LOG_IN:
-      return { ...state, isLogin: true };
-    case LOG_OUT:
-      return { ...state, isLogin: false };
+  const { type, payload } = action;
+  switch (type) {
+    case types.LOG_IN:
+      return { ...state, isLogin: true, user: payload };
+    case types.LOG_OUT:
+      return { ...state, isLogin: false, user: null };
     default:
       return state;
   }
