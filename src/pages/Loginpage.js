@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "../styles/LoginPage.css";
 import AuthService from "../services/AuthService";
 import { logInAction } from "../store/actionsCreators/userActions";
+import { Link } from "react-router-dom";
 
 function Loginpage(props) {
   const [login, setLogin] = useState("");
@@ -45,7 +46,8 @@ function Loginpage(props) {
             }}
           />
         </label>
-        <input type="submit" className="submit__btn" value={"LogIn"} />
+        <input type="submit" className="submit__btn" value={"Log In"} />
+        <Link to="/signup" className="submit__btn" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Sign Up</Link>
       </form>
     </div>
   );

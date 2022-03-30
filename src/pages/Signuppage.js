@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "../styles/LoginPage.css";
 import AuthService from "../services/AuthService";
 import { logInAction } from "../store/actionsCreators/userActions";
+import { Link } from "react-router-dom";
 
 function Signuppage(props) {
   const [login, setLogin] = useState("");
@@ -11,6 +12,7 @@ function Signuppage(props) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState("");
+  const [validateErrors, setValidateErrors] = useState([])
 
   const user = useSelector(({ user }) => user);
   const dispatch = useDispatch(user);
@@ -29,14 +31,21 @@ function Signuppage(props) {
       );
       localStorage.setItem("token", response.data.accessToken);
       dispatch(logInAction(response.data.user));
+      setValidateErrors([])
     } catch (e) {
-      console.log(e.response?.data?.message);
+      setValidateErrors(e.response?.data?.errors.map(item => {
+        return {
+          message: item.msg,
+          input: item.param
+        }
+      }))
+      console.log(validateErrors)
     }
   };
 
   return (
-    <div className="container loginpage">
-      <h1>LogIn</h1>
+    <div className="container loginpage" style={{marginTop: '100px'}}>
+      <h1>SignUp</h1>
       <form onSubmit={handleSubmit} className="login__form">
         <label className="inputs">
           <input
@@ -89,6 +98,7 @@ function Signuppage(props) {
           />
         </label>
         <input type="submit" className="submit__btn" value={"Sign Up"} />
+        <Link to="/login" className="submit__btn" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Log In</Link>
       </form>
     </div>
   );
